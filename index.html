@@ -3,17 +3,43 @@
 <head>
     <title>Zach's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to Zach's Portfolio</h1>
+        <div class="header-container">
+            <img src="your-photo.jpg" alt="Zach's Photo" class="profile-photo">
+            <div class="header-text">
+                <h1>Welcome to Zach's Portfolio</h1>
+                <a href="resume.pdf" class="resume-link" target="_blank">View My Resume</a>
+            </div>
+        </div>
     </header>
     <main>
-        <h2>Projects</h2>
-        <ul>
-            <li><a href="project1.html">Project 1: Time Series Analysis</a></li>
-            <li><a href="project2.html">Project 2: Machine Learning Pipeline</a></li>
-        </ul>
+        <section class="about">
+            <h2>About Me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet pharetra lacus, a eleifend ex.</p>
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="project1.html">Project 1: Time Series Analysis</a></li>
+                <li><a href="project2.html">Project 2: Machine Learning Pipeline</a></li>
+            </ul>
+        </section>
+        <section class="interactive">
+            <h2>Interactive Visualization</h2>
+            <div id="plotly-chart" class="plot-container"></div>
+            <script>
+                var data = [{
+                    x: [1, 2, 3, 4, 5],
+                    y: [10, 15, 13, 17, 22],
+                    type: 'scatter'
+                }];
+                Plotly.newPlot('plotly-chart', data);
+            </script>
+        </section>
     </main>
     <footer>
         <p>© 2024 Zach</p>
