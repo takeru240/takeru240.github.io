@@ -5,6 +5,51 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+        a {
+            color: #bb86fc;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .profile-photo {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .resume-link {
+            color: #03dac6;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .resume-link:hover {
+            text-decoration: underline;
+        }
+        .projects ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .projects li {
+            margin: 10px 0;
+        }
+        .plot-container {
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,7 +57,7 @@
             <img src="your-photo.jpg" alt="Zach's Photo" class="profile-photo">
             <div class="header-text">
                 <h1>Welcome to Zach's Portfolio</h1>
-                <a href="resume.pdf" class="resume-link" target="_blank">View My Resume</a>
+                <a href="resume.html" class="resume-link" target="_blank">View My Resume</a>
             </div>
         </div>
     </header>
@@ -40,6 +85,7 @@
                 Plotly.newPlot('plotly-chart', data);
             </script>
         </section>
+        
     </main>
     <footer>
         <p>© 2024 Zach</p>
