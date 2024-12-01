@@ -1,0 +1,71 @@
+As mentioned earlier, SVD can provide a way to compute Ridge Regression efficiently. Ridge regression is a statistical machine learning technique that helps in the presence of multicollinearity by adding an L2 regularization term to the loss function to penalize large coefficients. The objective function is given as,
+\begin{align}
+\hat{\beta} = \arg\min_{\beta} \left\{ \|\mathbf{y} - \mathbf{X}\beta\|_2^2 + \lambda \|\beta\|_2^2 \right\}
+\end{align}
+Where,\\
+\(\mathbf{y}\) is the \(n \times 1\) vector of observed outcomes, \\
+\(\mathbf{X}\) is the \(n \times p\) matrix of covariates, \\
+\(\beta\) is the \(p \times 1\) vector of coefficients, \\
+\(\lambda > 0\) is the regularization parameter. \\
+A closed-form solution for Ridge regression is,
+\begin{align}
+\hat{\beta} = (\mathbf{X}^\top \mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^\top \mathbf{y}
+\end{align}
+
+
+The SVD of \(\mathbf{X}\) allows us to express the Ridge regression solution as:
+\begin{align}
+\hat{\beta} = \mathbf{V} (\boldsymbol{\Sigma}^\top \boldsymbol{\Sigma} + \lambda \mathbf{I})^{-1} \boldsymbol{\Sigma}^\top \mathbf{U}^\top \mathbf{y}
+\end{align}
+
+Given the SVD of \(\mathbf{X}\):
+\begin{align}
+\mathbf{X} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^\top
+\end{align}
+the Ridge regression solution can be rewritten as:
+\begin{align}
+\hat{\beta} = \mathbf{V} (\boldsymbol{\Sigma}^\top \boldsymbol{\Sigma} + \lambda \mathbf{I})^{-1} \boldsymbol{\Sigma}^\top \mathbf{U}^\top \mathbf{y}
+\end{align}
+This expression shows that the coefficients \(\hat{\beta}\) are a linear combination of the singular vectors \(\mathbf{V}\), with each singular value \(\sigma_i\) (the diagonal elements of \(\boldsymbol{\Sigma}\)) adjusted by the regularization parameter \(\lambda\).
+\subsubsection{DML with Ridge Regression}
+The goal is to estimate the treatment effect \(\theta\) while controlling for the high-dimensional covariates \(X\) using DML with L2 regularization. First we start by splitting the data into two pieces, \(I_1\) and \(I_2\). This is to avoid overfitting by using different subsets for estimating nuisance parameters and constructing the orthogonal score.
+\subsubsection{First Stage - Nuisance Parameters}
+First estimate the nuisance parameters of the outcome model \(m(X)\) and the treatment model \(p(X)\).
+For \(m(X)\) use Ridge regression to estimate \(m(X) = \mathbb{E}[Y | X]\). For a given data split \(I_1\), the Ridge regression estimator for \(m(X)\) is,
+\begin{align}
+\hat{m}(X) = \mathbf{X} \hat{\beta}_m
+\end{align}
+where \(\hat{\beta}_m\) is obtained by solving:
+\begin{align}
+\hat{\beta}_m = \arg\min_{\beta} \left\{ \frac{1}{|I_1|} \sum_{i \in I_1} (Y_i - \mathbf{X}_i^\top \beta)^2 + \lambda \|\beta\|_2^2 \right\}
+\end{align}
+Here, \(\lambda > 0\) is the regularization parameter, and \(\|\beta\|_2^2 = \beta^\top \beta\) represents the L2 norm (or squared Euclidean norm).
+We can then estimate the treatment model \(p(X) = \mathbb{E}[T | X]\) using Ridge regression,
+\begin{align}
+\hat{p}(X) = \mathbf{X} \hat{\beta}_p
+\end{align}
+where \(\hat{\beta}_p\) is obtained by solving,
+\begin{align}
+\hat{\beta}_p = \arg\min_{\beta} \left\{ \frac{1}{|I_1|} \sum_{i \in I_1} (T_i - \mathbf{X}_i^\top \beta)^2 + \lambda \|\beta\|_2^2 \right\}
+\end{align}
+\subsubsection{Second Stage - Constructing the Orthogonal Score}
+We then construct the orthogonal score using estimates \(\hat{m}(X)\) and \(\hat{p}(X)\) obtained in the first stage. For each observation in the data split \(I_2\), the orthogonal score is,
+\begin{align}
+\psi(W_i, \theta) = (Y_i - \hat{m}(X_i)) (T_i - \hat{p}(X_i)) - \theta (T_i - \hat{p}(X_i))^2
+\end{align}
+where \(W_i = (Y_i, T_i, X_i)\) is the data tuple. We can then solve the DML estimator for \(\theta\),
+\begin{align}
+\frac{1}{|I_2|} \sum_{i \in I_2} \psi(W_i, \theta) = 0
+\end{align}
+\begin{align}
+\hat{\theta}_{\text{DML}} = \frac{\frac{1}{|I_2|} \sum_{i \in I_2} (Y_i - \hat{m}(X_i))(T_i - \hat{p}(X_i))}{\frac{1}{|I_2|} \sum_{i \in I_2} (T_i - \hat{p}(X_i))^2}
+\end{align}
+We can further improve the estimator's efficiency and reduce over-fitting by repeating the above but reverse the roles of \(I_1\) and \(I_2\), and average the results.
+\begin{align}
+\hat{\theta}_{\text{DML}} = \frac{1}{2} \left( \hat{\theta}_{\text{DML}}^{(1)} + \hat{\theta}_{\text{DML}}^{(2)} \right)
+\end{align}
+where \(\hat{\theta}_{\text{DML}}^{(1)}\) is the estimate obtained using \(I_1\) for nuisance parameter estimation and \(I_2\) for the orthogonal score, and \(\hat{\theta}_{\text{DML}}^{(2)}\) is the reverse.
+The full form of the final DML estimator is,
+\begin{align}
+\hat{\theta}_{\text{DML}} = \frac{1}{2} \left( \frac{\frac{1}{|I_2|} \sum_{i \in I_2} (Y_i - \hat{m}^{(1)}(X_i))(T_i - \hat{p}^{(1)}(X_i))}{\frac{1}{|I_2|} \sum_{i \in I_2} (T_i - \hat{p}^{(1)}(X_i))^2} + \frac{\frac{1}{|I_1|} \sum_{i \in I_1} (Y_i - \hat{m}^{(2)}(X_i))(T_i - \hat{p}^{(2)}(X_i))}{\frac{1}{|I_1|} \sum_{i \in I_1} (T_i - \hat{p}^{(2)}(X_i))^2} \right)
+\end{align}

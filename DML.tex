@@ -1,0 +1,53 @@
+\subsection{Background}
+Next we will cover a high level overview of Double Machine Learning (DML). The point of DML is in its handling of high-dimensional data while ensuring consistent estimation of causal parameters. DML involves constructing orthogonal scores and debiasing the estimates obtained from ML models. 
+\subsubsection{Matrix}
+Consider the problem of estimating the treatment effect \(\theta\) in a partially linear model,
+\begin{align}
+Y = T\theta + g(X) + \varepsilon
+\end{align}
+Where,\\
+\(Y\) is the outcome variable. \\
+\(T\) is the treatment variable. \\
+\(X\) is a vector of covariates. \\ 
+\(g(X)\) is a non-parametric function of \(X\) that captures the confounding effect.\\
+- \(\varepsilon\) is the error term. \\
+The goal of DML is to estimate \(\theta\) consistently, even when \(g(X)\) is unknown and complex.
+DML models estimate a nuisance parameter that include,\\
+The outcome model \(m(X) = \mathbb{E}[Y | X]\). \\
+The treatment model \(p(X) = \mathbb{E}[T | X]\). \\
+ML or non-parametric methods are used to estimate \(\hat{m}(X)\) and \(\hat{p}(X)\). DML seeks to construct an orthogonal score that is robust to errors in  the estimation of the nuisance parameters. The orthogonal score is defined as,
+\begin{align}
+\psi(W, \theta) = \left( Y - \hat{m}(X) \right)\left( T - \hat{p}(X) \right) - \theta \left( T - \hat{p}(X) \right)^2
+\end{align}
+where \(W = (Y, T, X)\) represents the observed data.
+A matrix representation for this can be presented as,
+\( \mathbf{Y} \) is the \(n \times 1\) vector of outcomes. \\
+\( \mathbf{T} \) is the \(n \times 1\) vector of treatments. \\
+\( \mathbf{X} \) is the \(n \times p\) matrix of covariates. \\
+\( \hat{\mathbf{m}} = \hat{m}(\mathbf{X}) \) is the \(n \times 1\) vector of predicted outcomes. \\
+\( \hat{\mathbf{p}} = \hat{p}(\mathbf{X}) \) is the \(n \times 1\) vector of predicted treatments.\\
+The orthogonal score can then be expressed in matrix notation as,
+\begin{align}
+\boldsymbol{\psi}(\mathbf{W}, \theta) = (\mathbf{Y} - \hat{\mathbf{m}}) \odot (\mathbf{T} - \hat{\mathbf{p}}) - \theta (\mathbf{T} - \hat{\mathbf{p}}) \odot (\mathbf{T} - \hat{\mathbf{p}})
+\end{align}
+where \( \odot \) denotes the Hadamard (element-wise) product.
+\subsection{Debias}
+For the debiased estimation, the DML estimator for \(\theta\) is obtained with the method of moments estimator,
+\begin{align}
+\frac{1}{n} \sum_{i=1}^n \psi(W_i, \theta) = 0
+\end{align}
+In matrix form, this becomes,
+\begin{align}
+\frac{1}{n} \mathbf{1}^\top \left[ (\mathbf{Y} - \hat{\mathbf{m}}) \odot (\mathbf{T} - \hat{\mathbf{p}}) \right] - \theta \frac{1}{n} \mathbf{1}^\top \left[ (\mathbf{T} - \hat{\mathbf{p}}) \odot (\mathbf{T} - \hat{\mathbf{p}}) \right] = 0
+\end{align}
+Solving for \(\theta\),
+\begin{align}
+\hat{\theta}_{\text{DML}} = \frac{\frac{1}{n} \mathbf{1}^\top \left[ (\mathbf{Y} - \hat{\mathbf{m}}) \odot (\mathbf{T} - \hat{\mathbf{p}}) \right]}{\frac{1}{n} \mathbf{1}^\top \left[ (\mathbf{T} - \hat{\mathbf{p}}) \odot (\mathbf{T} - \hat{\mathbf{p}}) \right]}
+\end{align}
+This DML estimator adjusts for potential biases in the estimation of the nuisance parameters \(m(X)\) and \(p(X)\).
+\subsection{Orthogonal}
+Lastly, the orthogonality condition ensures that small errors in estimating \(\hat{\mathbf{m}}\) and \(\hat{\mathbf{p}}\) do not bias the estimation of \(\theta\). ML models tend to overfit so this is key when dealing with high-dimensional models. Mathematically this orthogonality is reflected by the partial derivative of the moment function with respect to the nuisance parameters is zero,
+\begin{align}
+\frac{\partial \mathbb{E}[\psi(W, \theta)]}{\partial m(X)} = 0 \quad \text{and} \quad \frac{\partial \mathbb{E}[\psi(W, \theta)]}{\partial p(X)} = 0
+\end{align}
+Thus, even if \(\hat{\mathbf{m}}\) or \(\hat{\mathbf{p}}\) are slightly misspecified, the impact on \(\hat{\theta}_{\text{DML}}\) is minimal. To get a slightly clearer picture of what is happening, I will use DML with L2 regularization (Ridge regression) as discussed previously with 2SLS and SVD.
