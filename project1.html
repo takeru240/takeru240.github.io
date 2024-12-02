@@ -1,80 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Paper</title>
-  <!-- Load MathJax -->
-  <script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+<html>
+  <head>
+    <title>Zach's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="components.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
 </head>
+
 <body>
+    <!-- Header -->
+    <div id="header"></div>
 
-  <p>
-    \documentclass{article}
-\usepackage{graphicx} % Required for inserting images
-\usepackage[margin=1in]{geometry}
-\usepackage{tcolorbox}
-\usepackage{listings}
-\usepackage[utf8]{inputenc}
-\usepackage{xcolor}
-\lstset{
-    language=Python,
-    basicstyle=\ttfamily\footnotesize, % Change \footnotesize to \scriptsize or \tiny for even smaller font
-    keywordstyle=\color{blue},
-    stringstyle=\color{red},
-    commentstyle=\color{green},
-    showstringspaces=false,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    frame=single,
-    breaklines=true,
-    captionpos=b
-}
-\usepackage{amsmath,amsthm,amssymb,amsfonts, fancyhdr, color, comment, graphicx, environ}
-\usepackage{xcolor}
-\usepackage{mdframed}
-\usepackage[shortlabels]{enumitem}
-\usepackage{indentfirst}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
-}
-\pagestyle{fancy}
+    <!-- Main Content -->
+    <div class="main-content">
+            <section class="pdf-description" style="margin-bottom: 20px;">
+            <h2>Writing Sample</h2>
+            <p>This is a sample of my recent writing work. You can view the embedded PDF below or open it in a new tab for a full view.</p>
+            <a href="dml-zacharyolea.pdf" target="_blank" style="color: #bb86fc; text-decoration: underline;">Open PDF in a New Tab</a>
+        </section>
+        <!-- PDF Viewer Container -->
+        <div id="pdf-viewer" style="width: 100%; border: 1px solid #ccc;"></div>
+    </div>
 
-\title{Causal Estimation with Matrices: 2SLS and DML\\Matrix Theory Writing Sample}
-\author{Zachary Olea}
-\date{August $11^{\text{th}}$ $2024$}
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
 
-\begin{document}
+    <!-- Footer -->
+    <div id="footer"></div>
 
-\maketitle
-\section{Introduction}
-\input{intro.tex}
-\section{Two Stage Least Squares}
-\input{2SLS.tex}
-\section{Double Machine Learning}
-\input{DML.tex}
-\section{Example: L2 Regularization (Ridge)}
-\input{ridge.tex}
-\section{Conclusion}
-\input{Conclusion.tex}
+    <!-- Dynamic PDF Embedding Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pdfViewer = document.getElementById('pdf-viewer');
 
-% \begin{lstlisting}[language=Python, caption=Python Code]
-% \end{lstlisting}
+            // Function to set dynamic height
+            function setDynamicHeight() {
+                const viewportHeight = window.innerHeight; // Total viewport height
+                const headerHeight = document.getElementById('header').offsetHeight || 0;
+                const footerHeight = document.getElementById('footer').offsetHeight || 0;
 
-\bibliographystyle{plain}
-\bibliography{references}
-\end{document}
+                // Calculate available height for the PDF viewer
+                const availableHeight = viewportHeight - headerHeight - footerHeight - 305; // Adjust for padding/margins
+                pdfViewer.style.height = `${availableHeight}px`;
+            }
 
-  </p>
+            // Set initial height and listen for window resize
+            setDynamicHeight();
+            window.addEventListener('resize', setDynamicHeight);
 
-    <footer>
-        <a href="index.html">Back to Home</a>
-    </footer>
+            // Embed the PDF
+            PDFObject.embed("dml-zacharyolea.pdf", "#pdf-viewer", {
+                width: "100%",
+                height: pdfViewer.style.height
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,27 +1,103 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
 }
 
-header {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1em 0;
+a {
+    color: #bb86fc;
 }
 
-main {
+.menu-bar {
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-bar a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.menu-bar a:hover {
+    text-decoration: underline;
+}
+
+.sidebar {
+    width: 300px;
     padding: 20px;
+    border-left: 1px solid #333;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    height: calc(100% - 120px);
+    display: flex;
+    flex-direction: column; /* Enables stacking of children */
+    justify-content: space-between; /* Pushes items to top and bottom */
+    box-sizing: border-box; /* Ensures padding doesn't affect size */
+}
+
+.sidebar iframe {
+    margin-top: auto; /* Pushes the iframe to the bottom */
+}
+
+
+.sidebar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #03dac6;
+    display: block;
+    margin: 0 auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sidebar p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.main-content {
+    margin-right: 300px;
+    padding-top: 30px;
+    padding-left: 20px;
+    flex-grow: 1;
+}
+
+.projects ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.projects li {
+    margin: 10px 0;
+}
+
+.plot-container {
+    margin-top: 20px;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    padding: 1px 0;
+    border-top: 1px solid #333;
+    background-color: #121212;
+    color: #ffffff;
+    position: fixed; /* Ensure the footer stays visible */
+    bottom: 0;       /* Position it at the bottom */
+    width: 100%;     /* Full width across the screen */
+    z-index: 100;     /* Ensure it appears above other content */
 }
+

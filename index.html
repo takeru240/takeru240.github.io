@@ -4,91 +4,31 @@
     <title>Zach's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="components.js" defer></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-        }
-        a {
-            color: #bb86fc;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-        }
-        .profile-photo {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
-        }
-        .resume-link {
-            color: #03dac6;
-            text-decoration: none;
-            margin-top: 10px;
-            display: inline-block;
-        }
-        .resume-link:hover {
-            text-decoration: underline;
-        }
-        .projects ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .projects li {
-            margin: 10px 0;
-        }
-        .plot-container {
-            margin-top: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #333;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="your-photo.jpg" alt="Zach's Photo" class="profile-photo">
-            <div class="header-text">
-                <h1>Welcome to Zach's Portfolio</h1>
-                <a href="resume.html" class="resume-link" target="_blank">View My Resume</a>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section class="about">
+    <div id="header"></div> <!-- Header will be dynamically loaded here -->
+    
+    <div class="main-content">
+        <section class="about-me">
             <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet pharetra lacus, a eleifend ex.</p>
+            <p>
+                I am currently working as a senior financial analyst at PIMCO, supporting the APAC region, marketing, and client solutions & analytics in financial reporting. Additionally, I provide statistical analysis, coding and automation expertise, and ad hoc research for the corporate finance team. Below are writing samples of my research from academic projects I have worked on.
+            </p>
         </section>
+
         <section class="projects">
             <h2>Projects</h2>
             <ul>
-                <li><a href="project1.html">Project 1: Time Series Analysis</a></li>
-                <li><a href="project2.html">Project 2: Machine Learning Pipeline</a></li>
+                <li><a href="project1.html">Research Project 1 Writing Sample: Causal Estimation with Matrices: 2SLS and DML</a></li>
+                <li><a href="project2.html">Research Project 2 Writing Sample: Hierarchical Time Series Clustering</a></li>
+                <iframe src="plotly_chart.html" style="width: 1400px; height: 650px; border: none;"></iframe>
             </ul>
         </section>
-        <section class="interactive">
-            <h2>Interactive Visualization</h2>
-            <div id="plotly-chart" class="plot-container"></div>
-            <script>
-                var data = [{
-                    x: [1, 2, 3, 4, 5],
-                    y: [10, 15, 13, 17, 22],
-                    type: 'scatter'
-                }];
-                Plotly.newPlot('plotly-chart', data);
-            </script>
-        </section>
-        
-    </main>
-    <footer>
-        <p>© 2024 Zach</p>
-    </footer>
+    </div>
+
+    <div id="sidebar"></div> <!-- Sidebar will be dynamically loaded here -->
+    <div id="footer"></div> <!-- Footer will be dynamically loaded here -->
 </body>
 </html>

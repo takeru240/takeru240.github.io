@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zach's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="components.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+             <!-- Embedded Plotly Chart -->
+
+    <div class="main-content">
+            <section class="pdf-description" style="margin-bottom: 20px;">
+            <h2>Writing Sample</h2>
+            <p>This is a sample of my recent writing work. You can view the embedded PDF below or open it in a new tab for a full view.</p>
+            <a href="tsclustering-zacharyolea.pdf" target="_blank" style="color: #bb86fc; text-decoration: underline;">Open PDF in a New Tab</a> <br>
+        </section>
+        <!-- PDF Viewer Container -->
+        <div id="pdf-viewer" style="width: 100%; border: 1px solid #ccc;"></div>
+        <iframe src="plotly_chart.html" style="width: 1400px; height: 650px; border: none;"></iframe>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Dynamic PDF Embedding Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pdfViewer = document.getElementById('pdf-viewer');
+
+            // Function to set dynamic height
+            function setDynamicHeight() {
+                const viewportHeight = window.innerHeight; // Total viewport height
+                const headerHeight = document.getElementById('header').offsetHeight || 0;
+                const footerHeight = document.getElementById('footer').offsetHeight || 0;
+
+                // Calculate available height for the PDF viewer
+                const availableHeight = viewportHeight - headerHeight - footerHeight - 305; // Adjust for padding/margins
+                pdfViewer.style.height = `${availableHeight}px`;
+            }
+
+            // Set initial height and listen for window resize
+            setDynamicHeight();
+            window.addEventListener('resize', setDynamicHeight);
+
+            // Embed the PDF
+            PDFObject.embed("tsclustering-zacharyolea.pdf", "#pdf-viewer", {
+                width: "100%",
+                height: pdfViewer.style.height
+            });
+        });
+    </script>
+</body>
+</html>
