@@ -1,34 +1,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Zach's Portfolio</title>
+    <title>Zachary Olea's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="components.js" defer></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <div id="header"></div> <!-- Header will be dynamically loaded here -->
-    
-    <div class="main-content">
-        <section class="about-me">
+    <!-- Header Section -->
+    <header class="top-header">
+        <div class="header-left">
+            <img src="zacholea1.jpg" alt="Zachary Olea" class="profile-pic">
+        </div>
+        <div class="header-center">
+            <h1>Zachary Takeru Olea</h1>
+            <p>Senior Financial Analyst @ PIMCO</p>
+            <p>MS Applied & Computational Math (JHU) | MS Finance (UCI)</p>
+        </div>
+        <div class="header-right">
+            <iframe width="100%" height="300" frameborder="no" scrolling="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1842343818&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false">
+            </iframe>
+        </div>
+    </header>
+
+    <!-- Navigation Links -->
+    <nav class="section-nav">
+        <a href="#about">About Me</a>
+        <a href="#experience">Work Experience</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section id="about">
             <h2>About Me</h2>
             <p>
-                I am currently working as a senior financial analyst at PIMCO, supporting the APAC region, marketing, and client solutions & analytics in financial reporting. Additionally, I provide statistical analysis, coding and automation expertise, and ad hoc research for the corporate finance team. Below are writing samples of my research from academic projects I have worked on.
+                I'm a financial data scientist and graduate researcher in applied mathematics, passionate about uncovering patterns in time series data and solving real-world problems using machine learning and statistical modeling. With a strong foundation in econometrics, probabilistic modeling, and causal inference, I specialize in developing quantitative solutions for financial forecasting and systematic decision-making. I’m especially interested in the intersection of data science and finance—designing tools that improve forecasting accuracy, risk modeling, and business strategy. My academic and professional work explores emerging methods like Bayesian transformers, Kolmogorov–Arnold networks, and partial pooling to handle complex, high-dimensional data environments.
             </p>
         </section>
+<hr>
+        <section id="experience">
+            <h2>Work Experience</h2>
 
-        <section class="projects">
-            <h2>Projects</h2>
+            <h3>Senior Financial Analyst – Data Science</h3>
+            <p><strong>PIMCO – Pacific Investment Management Company, Newport Beach, CA</strong><br>
+            <em>February 2023 – Present</em></p>
             <ul>
-                <li><a href="project1.html">Research Project 1 Writing Sample: Causal Estimation with Matrices: 2SLS and DML</a></li>
-                <li><a href="project2.html">Research Project 2 Writing Sample: Hierarchical Time Series Clustering</a></li>
-                <!-- <iframe src="plotly_chart.html" style="width: 1400px; height: 650px; border: none;"></iframe> -->
+                <li>Built and deployed ML models to forecast investor cash flows, modeling inflow/outflow behavior by client and product.</li>
+                <li>Performed profitability attribution using multi-dimensional analytics to support planning and client strategy.</li>
+                <li>Led root cause investigations into forecast anomalies due to business logic inconsistencies and hierarchy misalignments.</li>
+            </ul>
+
+            <h3>Financial Analyst – Data Science</h3>
+            <p><strong>Crate and Barrel, Remote – Chicago, IL</strong><br>
+            <em>November 2021 – February 2023</em></p>
+            <ul>
+                <li>Engineered latent factor pipelines in GCP to derive embeddings for high-cardinality transactional features.</li>
+                <li>Developed Bayesian VAR forecasting systems with partial pooling for long-range product-channel projections.</li>
+                <li>Applied difference-in-differences analysis to estimate the impact of retail expansion on e-commerce profitability.</li>
+                <li>Used survival models to analyze order delivery times under competing risks and forecast long-tail events.</li>
             </ul>
         </section>
-    </div>
 
-    <div id="sidebar"></div> <!-- Sidebar will be dynamically loaded here -->
-    <div id="footer"></div> <!-- Footer will be dynamically loaded here -->
+<hr>
+        <section id="education">
+            <h2>Education</h2>
+
+            <h3>Johns Hopkins University – Whiting School of Engineering</h3>
+            <p><strong>Master of Science in Applied & Computational Mathematics</strong><br>
+            GPA: 4.0<br>
+            <em>January 2024 – August 2025</em></p>
+
+            <h3>University of California, Irvine – Merage School of Business</h3>
+            <p><strong>Master of Finance</strong><br>
+            GPA: 3.8<br>
+            <em>September 2020 – August 2021</em></p>
+
+            <h3>University of California, Santa Barbara</h3>
+            <p><strong>Bachelor of Arts in Music</strong><br>
+            <em>September 2015 – March 2018</em></p>
+        </section>
+
+<hr>
+
+<section id="research">
+  <h2>Research</h2>
+
+  <article class="paper-entry">
+    <h3><a href="KAN.pdf" target="_blank">Stochastic Optimization for Kolmogorov–Arnold Networks in Yield Curve Estimation</a></h3>
+    <p>
+      This paper explores training Kolmogorov–Arnold Networks (KANs) for yield curve modeling using advanced optimization techniques. It compares stochastic gradient methods, SPSA, and L-BFGS in terms of robustness and convergence in noisy, nonconvex financial settings. KANs are shown to offer both flexibility and interpretability, making them suitable for complex financial surfaces.
+    </p>
+    <details class="paper-entry">
+      <summary>📄 View Paper</summary>
+      <iframe src="KAN.pdf" width="100%" height="600px" style="border: 1px solid #444; margin-top: 15px;"></iframe>
+    </details>
+  </article>
+
+  <article class="paper-entry">
+    <h3><a href="LDA.pdf" target="_blank">Topic Modeling with Financial Text Corpora</a></h3>
+    <p>
+      This study applies Latent Dirichlet Allocation (LDA) to SEC 8-K filings from S&P 100 firms, revealing latent disclosure themes across sectors and time. It integrates sectoral analysis, regulatory impact tracking, and dimensionality reduction (UMAP/t-SNE) to visualize evolving disclosure behavior in corporate communications.
+    </p>
+    <details class="paper-entry">
+      <summary>📄 View Paper</summary>
+      <iframe src="LDA.pdf" width="100%" height="600px" style="border: 1px solid #444; margin-top: 15px;"></iframe>
+    </details>
+  </article>
+
+  <article class="paper-entry">
+    <h3><a href="tsclustering-zacharyolea.pdf" target="_blank">Hierarchical Time Series Clustering</a></h3>
+    <p>
+      This work analyzes hierarchical structures in time series data using synthetic simulations and Walmart's M5 competition dataset. It applies dimensionality reduction and clustering (PCA, VAEs, DTW) to uncover latent groupings, outperforming traditional hierarchies and improving interpretability and forecasting alignment.
+    </p>
+    <details class="paper-entry">
+      <summary>📄 View Paper</summary>
+      <iframe src="tsclustering-zacharyolea.pdf" width="100%" height="600px" style="border: 1px solid #444; margin-top: 15px;"></iframe>
+    </details>
+  </article>
+
+  <article class="paper-entry">
+    <h3><a href="dml-zacharyolea.pdf" target="_blank">Causal Estimation with Matrices: 2SLS and Double Machine Learning</a></h3>
+    <p>
+      This paper presents a matrix-theoretic treatment of causal inference, contrasting Two-Stage Least Squares (2SLS) and Double Machine Learning (DML). It demonstrates how SVD, Ridge regression, and orthogonal scores are used to mitigate endogeneity and ensure robust causal estimates in high-dimensional settings.
+    </p>
+    <details class="paper-entry">
+      <summary>📄 View Paper</summary>
+      <iframe src="dml-zacharyolea.pdf" width="100%" height="600px" style="border: 1px solid #444; margin-top: 15px;"></iframe>
+    </details>
+  </article>
+</section>
+
+<div style="height: 80px;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Zach's Portfolio. All rights reserved.</p>
+    </footer>
+
+
+<script>
+  document.querySelectorAll(".paper-entry").forEach((entry) => {
+    entry.addEventListener("toggle", function () {
+      if (entry.open) {
+        // Close all others
+        document.querySelectorAll(".paper-entry").forEach((el) => {
+          if (el !== entry) el.removeAttribute("open");
+        });
+
+        // Scroll the opened paper into view (autoscroll)
+        setTimeout(() => {
+          entry.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100); // small delay to allow expand animation
+      }
+    });
+  });
+</script>
+
+    
+
 </body>
 </html>
