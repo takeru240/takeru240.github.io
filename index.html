@@ -3,33 +3,66 @@
 <head>
     <title>Zachary Olea's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="top-header">
-        <div class="header-left">
-            <img src="zacholea1.jpg" alt="Zachary Olea" class="profile-pic">
+  <!-- Header Section -->
+  <header class="top-header">
+    <div class="header-left">
+      <img src="zacholea1.jpg" alt="Zachary Olea" class="profile-pic">
+    </div>
+
+    <div class="header-center">
+      <div class="furigana-name">
+        <div class="furigana-pair">
+          <div class="furigana">ザッカリー</div>
+          <div class="name-en">Zachary</div>
         </div>
-        <div class="header-center">
-            <h1>Zachary Takeru Olea</h1>
-            <p>Senior Financial Analyst @ PIMCO</p>
-            <p>MS Applied & Computational Math (JHU) | MS Finance (UCI)</p>
+        <div class="furigana-pair">
+          <div class="furigana">タケル</div>
+          <div class="name-jp">武尊</div>
         </div>
-        <div class="header-right">
-            <iframe width="100%" height="300" frameborder="no" scrolling="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1842343818&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false">
-            </iframe>
+        <div class="furigana-pair">
+          <div class="furigana">オレア</div>
+          <div class="name-en">Olea</div>
         </div>
-    </header>
+      </div>
+
+      <p class="header-title">
+        Senior Financial Analyst @ 
+        <a href="https://www.pimco.com" class="pimco-brand" target="_blank" rel="noopener noreferrer">PIMCO</a><br>
+        MS Applied & Computational Math @ JHU Whiting<br>
+        MS Finance @ UCI Merage
+      </p>
+
+      <div class="social-buttons">
+        <a href="https://www.linkedin.com/in/zacharyolea/" class="btn-linkedin" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/takeru240" class="btn-github" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:zacharyolea@gmail.com" class="btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  <div class="header-right-ghost"></div> <!-- ghost for symmetry -->
+  </header>
+
 
     <!-- Navigation Links -->
-    <nav class="section-nav">
-        <a href="#about">About Me</a>
-        <a href="#experience">Work Experience</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-    </nav>
+    <div class="nav-wrapper">
+  <hr class="section-divider">
+  <nav class="section-nav">
+      <a href="#about">About Me</a>
+      <a href="#experience">Work Experience</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+  </nav>
+  <hr class="section-divider">
+</div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -43,7 +76,7 @@
         <section id="experience">
             <h2>Work Experience</h2>
 
-            <h3>Senior Financial Analyst – Data Science</h3>
+            <h3>Senior Financial Analyst, Data Science</h3>
             <p><strong>PIMCO – Pacific Investment Management Company, Newport Beach, CA</strong><br>
             <em>February 2023 – Present</em></p>
             <ul>
@@ -52,7 +85,7 @@
                 <li>Led root cause investigations into forecast anomalies due to business logic inconsistencies and hierarchy misalignments.</li>
             </ul>
 
-            <h3>Financial Analyst – Data Science</h3>
+            <h3>Financial Analyst, Data Science</h3>
             <p><strong>Crate and Barrel, Remote – Chicago, IL</strong><br>
             <em>November 2021 – February 2023</em></p>
             <ul>
@@ -62,7 +95,6 @@
                 <li>Used survival models to analyze order delivery times under competing risks and forecast long-tail events.</li>
             </ul>
         </section>
-
 <hr>
         <section id="education">
             <h2>Education</h2>
@@ -137,7 +169,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Zach's Portfolio. All rights reserved.</p>
+        <p>&copy; 2025 Zach's Portfolio. All rights reserved.</p>
     </footer>
 
 
@@ -163,3 +195,5 @@
 
 </body>
 </html>
+
+              <!-- <i class="fas fa-code"></i> -->

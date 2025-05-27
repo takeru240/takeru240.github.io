@@ -1,0 +1,81 @@
+<!-- <div style="background-color: #1e1e1e; padding: 20px; font-family: 'Roboto', sans-serif; color: white; line-height: 2;">
+  <p style="color: #a05523;">This is a warm chestnut brown (#a05523).</p>
+  <p style="color: #5c2e1f;">This is a dark umber brown (#5c2e1f).</p>
+  <p style="color: #aa4a24;">This is a sienna tone (#aa4a24).</p>
+  <p style="color: #7e4a35;">This is a burnt mocha (#7e4a35).</p>
+  <p style="color: #4b2e2a;">This is a coffee bean brown (#4b2e2a).</p>
+
+  <p style="color: #826254;">This is a mocha mist (#826254).</p>
+  <p style="color: #927059;">This is a cappuccino shade (#927059).</p>
+  <p style="color: #c8ad8d;">This is a latte cream (#c8ad8d).</p>
+  <p style="color: #a9746e;">This is a cocoa brown (#a9746e).</p>
+  <p style="color: #bca38d;">This is a walnut milk (#bca38d).</p>
+
+  <p style="color: #c49e78;">This is a sandstone tone (#c49e78).</p>
+  <p style="color: #decbb7;">This is a beige blush (#decbb7).</p>
+  <p style="color: #b29982;">This is a warm taupe (#b29982).</p>
+  <p style="color: #e6d2b5;">This is a pale almond (#e6d2b5).</p>
+  <p style="color: #d2b48c;">This is a desert tan (#d2b48c).</p>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Font Animations</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+
+    .font-sample {
+      font-size: 2em;
+      margin: 20px 0;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideFadeIn 0.6s ease forwards;
+    }
+
+    /* Delays for staggered entrance */
+    .font-sample:nth-child(1) { animation-delay: 0.2s; }
+    .font-sample:nth-child(2) { animation-delay: 0.4s; }
+    .font-sample:nth-child(3) { animation-delay: 0.6s; }
+    .font-sample:nth-child(4) { animation-delay: 0.8s; }
+
+    /* Hover: zoom + color shift */
+    .font-sample:hover {
+      color: #fcd34d;
+      transform: scale(1.05);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    @keyframes slideFadeIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Optional font styles */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=DotGothic16&display=swap');
+
+    .fira { font-family: 'Fira Code', monospace; }
+    .jetbrains { font-family: 'JetBrains Mono', monospace; }
+    .dotgothic { font-family: 'DotGothic16', sans-serif; }
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align: center; color: #bb86fc;">Animated Font Preview</h1>
+
+  <div class="font-sample fira">テクノロジー is evolving — stay curious.</div>
+  <div class="font-sample jetbrains">プログラムは世界を変える。</div>
+  <div class="font-sample dotgothic">未来のコードを信じろ。</div>
+  <div class="font-sample fira">Hello, World! – Welcome to the matrix.</div>
+
+</body>
+</html>

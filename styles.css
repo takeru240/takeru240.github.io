@@ -1,8 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+
+:root {
+    --bgcolor1: #1e1e1e;
+    --accentcolor1: #decbb7;
+    --accentcolor2: #c8ad8d;
+    --accentfont1: #d2b48c;
+    --primaryfontcolor: #fefefe;
+
+    /* --font-main: 'Source Code Pro', monospace; */
+    --font-main: 'JetBrains Mono', monospace;
+    --font-links: 'Source Code Pro', monospace;
+    --japanesepixel: 'DotGothic16', monospace;
+    --furiganafont: 'Hachi Maru Pop', monospace;
+    --kanjifont: 'Yuji Boku', monospace;
+}
+
+/* Social Media Links */
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.social-buttons i {
+  font-size: 1.5em;
+  margin-right: 0px;
+  vertical-align: middle;
+}
+
+.social-buttons a {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: var(--font-links);
+  letter-spacing: .01em;
+  transition: all 0.2s ease;
+}
+
+/* LinkedIn: blue w/ white text */
+.btn-linkedin {
+  background-color: #0077b5;
+  color: #ffffff;
+  border: 2px solid #0077b5;
+}
+
+.btn-linkedin:hover {
+  background-color: #ffffff;
+  color: #0077b5;
+}
+
+/* GitHub: dark mode neutral */
+.btn-github {
+  background-color: #24292e;
+  color: #ffffff;
+  border: 2px solid #24292e;
+}
+
+.btn-github:hover {
+  background-color: #ffffff;
+  color: #24292e;
+}
+
+/* Email: glowing gold gradient */
+.btn-email {
+  background: linear-gradient(135deg, var(--accentcolor1), var(--accentcolor2));
+  color: #1e1e1e;
+  border: 2px solid var(--accentcolor1);
+  /* box-shadow: 0 0 10px var(--accentcolor1); */
+}
+
+.btn-email:hover {
+  background: #1e1e1e;
+  color: var(--accentcolor1);
+  border-color: var(--accentcolor1);
+  box-shadow: none;
+}
+
+/* PIMCO Branding */
+.pimco-brand {
+    color: #273e6b;
+    font-family: 'EB Garamond', monospace;
+    letter-spacing: 0.45em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 1.3em;
+    /* text-shadow: 1px 1px 2px var(--accentcolor1); */
+}
+
+.pimco-brand:hover {
+    color: #273e6b;
+    text-shadow: 1px 1px 2px var(--primaryfontcolor);
+    text-decoration: none;
+}
+
 /* Base Layout */
 body {
-    background-color: #1e1e1e;
+    background-color: var(--bgcolor1);
     color: #f0f0f0;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-main);
     margin: 0;
     padding: 0;
 }
@@ -18,74 +124,87 @@ a:hover {
 
 /* Header Layout */
 .top-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 20px;
-    background-color: #1e1e1e;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.header-left,
-.header-center,
-.header-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background-color: var(--bgcolor1);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .header-left {
-    flex-shrink: 0;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .header-left .profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid #03dac6;
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  border: 2px solid var(--accentcolor1);
 }
 
 .header-center {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex-grow: 1;
-    min-width: 250px;
+  flex: 1 1 300px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-
-.header-center h1 {
-    margin: 0;
-    font-size: 1.8em;
-}
-
-.header-right {
-    flex-shrink: 0;
-    min-width: 250px;
+.header-right-ghost {
+  width: 200px;
+  height: 1px;
+  flex-shrink: 0;
 }
 
 /* Section Navigation */
-.section-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 10px 0;
-    gap: 20px;
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--accentcolor1);
+    margin: 0 auto;
+    width: 900px;
+    width: 90%;
+    max-width: 900px;
+}
+
+.nav-wrapper {
     position: sticky;
     top: 0;
     z-index: 10;
+    background-color: var(--bgcolor1);
+}
+
+.section-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 50px;
 }
 
 .section-nav a {
-    color: #ffffff;
+    color: var(--primaryfontcolor);
     font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
+
+.section-nav a:hover {
+    color: var(--accentcolor1); /* Optional: highlight color on hover */
+}
+
 
 /* Main Content */
 .main-content {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 25px auto;
     padding: 0 20px;
 }
 
@@ -99,26 +218,17 @@ a:hover {
     font-size: 1.2em;
 }
 
-/* Divider Line */
-hr {
-    border: none;
-    height: 1px;
-    background-color: #444;
-    margin: 40px 0;
-}
-
 /* Footer */
 footer {
     text-align: center;
-    padding: 10px;
-    border-top: 1px solid #333;
-    background-color: #121212;
+    padding: 0px 5px;
+    border-top: 1px solid var(--bgcolor1);
+    background-color: var(--bgcolor1);
     color: #ffffff;
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    z-index: 100;
+    font-size: 0.9em;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -144,4 +254,57 @@ details[open] iframe {
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.furigana-name {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+}
+
+.furigana-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.furigana-pair .furigana {
+    font-family: 'Hachi Maru Pop', sans-serif;
+    font-size: 0.9em;
+    color: var(--accentcolor1);
+    letter-spacing: 0.05em;
+}
+
+.name-en {
+    font-family: 'Bebas Neue', serif;
+    font-size: 2.5em;
+    color: var(--primaryfontcolor);
+    padding-top: 6px;
+}
+.name-jp {
+    font-family: 'Yuji Boku', sans-serif;
+    font-size: 2.2em;
+    color: var(--accentcolor1);
+    line-height: 1.5;
+}
+
+
+h2 {
+    font-family: var(--japanesepixel);
+    color: var(--accentfont1);
+    font-size: 1.4em;
+    border-bottom: 1px solid var(--accentcolor1);
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--accentcolor1);
+    margin-top: 0px;
+    margin-bottom: 25px;
 }
