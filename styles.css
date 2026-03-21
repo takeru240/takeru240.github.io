@@ -76,7 +76,6 @@
   background: linear-gradient(135deg, var(--accentcolor1), var(--accentcolor2));
   color: #1e1e1e;
   border: 2px solid var(--accentcolor1);
-  /* box-shadow: 0 0 10px var(--accentcolor1); */
 }
 
 .btn-email:hover {
@@ -86,21 +85,54 @@
   box-shadow: none;
 }
 
+/* Twitch Branding */
+.twitch-brand {
+    color: #9146FF;
+    font-family: var(--font-main);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 1.2em;
+}
+
+.twitch-brand:hover {
+    color: #BF94FF;
+    text-shadow: 0 0 10px rgba(145, 70, 255, 0.4);
+    text-decoration: none;
+}
+
 /* PIMCO Branding */
 .pimco-brand {
     color: #273e6b;
-    font-family: 'EB Garamond', monospace;
+    font-family: 'EB Garamond', serif;
     letter-spacing: 0.45em;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s ease;
     font-size: 1.3em;
-    /* text-shadow: 1px 1px 2px var(--accentcolor1); */
 }
 
 .pimco-brand:hover {
     color: #273e6b;
     text-shadow: 1px 1px 2px var(--primaryfontcolor);
+    text-decoration: none;
+}
+
+/* Crate and Barrel Branding */
+.crate-brand {
+    color: #E8E0D5;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 1.3em;
+}
+
+.crate-brand:hover {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
     text-decoration: none;
 }
 
@@ -148,6 +180,8 @@ a:hover {
   height: 200px;
   border-radius: 10%;
   border: 2px solid var(--accentcolor1);
+  object-fit: cover;
+  object-position: center top;
 }
 
 .header-center {
@@ -197,7 +231,7 @@ a:hover {
 }
 
 .section-nav a:hover {
-    color: var(--accentcolor1); /* Optional: highlight color on hover */
+    color: var(--accentcolor1);
 }
 
 
